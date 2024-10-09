@@ -190,7 +190,22 @@ form.addEventListener('submit',  function (e) {
 		console.log("Ошибка отправки формы")
 		return false;
 	}
-	console.log("продолжение формы")
+	let data = {
+		select_one: document.querySelector("#select_one").value,
+		select_two: document.querySelector("#select_two").value,
+		sign: document.querySelector("#number").value,
+		phone_number: document.querySelector("#phone_number").value,
+		date: document.querySelector("#airdatepicker").value
+	}
+
+	let response = await fetch("mail.php", {
+		method: "POST",
+		body: JSON.stringify(data),
+		headers: {
+			"Content-Type": "application/json; charset=UTF-8"
+		}
+	})
+	let result = await response.text()
 	form.reset()
 	document.querySelector(".modal-wrap").classList.add("modal-active");
 	document.querySelector(".modal-close-button").addEventListener("click", function(){
