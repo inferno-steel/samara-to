@@ -180,7 +180,7 @@ function checkCheckbox() {
 
 // Отправка формы
 
-form.addEventListener('submit',  function (e) {
+form.addEventListener('submit', async function (e) {
 	e.preventDefault();
 	removeValidation();
 	if (checkFieldsPresence() == true
